@@ -1,0 +1,20 @@
+{
+  "name": "servernode",
+  "version": "0.13.1",
+  "description": "es un ejmeplo de node server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "NuevasTecnicasProgramacion"
+  ],
+  "author": "Carlos Guagrilla",
+  "license": "ISC",
+  "dependencies": {
+    "color": "^4.2.0",
+    "express": "^4.17.2"
+  }
+}
