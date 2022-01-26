@@ -10,27 +10,28 @@ const server = http.createServer(funcionServidor);
 server.listen(3000, ()=>{console.log('Servidor levantado')});
 */
 
-const expres = require('express');
-const app = expres();
+const express = require('express');
+const server = express();
 const morgan = require('morgan');
 
+server.use(express.json());
+
 function logger(req,res,next){
-    console.log("Ingresa al sistema"/*`Peticion recibida: ${req.protocolo}://${req.get('host')}${req.originalUrl}`*/)
+    console.log(`Peticion recibida: ${req.protocol}://${req.get('host')}${req.originalUrl}`)
     next();
 }
 
-app.use(logger);
-app.use(morgan('tiny'));
+server.use(logger);
+server.use(morgan('tiny'));
+server.set('port', 4000);
 
-/*app.set('port', 3000);*/
-
-app.get('/conParametro/:id',(req,res)=>{
+server.get('/conParametro/:id',(req,res)=>{
     console.log(req,params)
-    res.send("<h1>con parametros</h1>")
+    res.send("<h1> con parametros </h1>")
 })
 
-app.listen(/*app.params('port')*/3000, (req,res)=>{
-    console.log("server en el puerto ", app.get('port'))
+server.listen(server.get('port'), (req,res)=>{
+    console.log("server en el puerto ", server.get('port'))
 })
 
 /*server.use(express.json());*/
