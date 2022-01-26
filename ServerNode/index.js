@@ -10,13 +10,33 @@ const server = http.createServer(funcionServidor);
 server.listen(3000, ()=>{console.log('Servidor levantado')});
 */
 
-const express = require('express');
-const server = express();
+const expres = require('express');
+const app = expres();
+const morgan = require('morgan');
 
-server.use(express.json());
+function logger(req,res,next){
+    console.log("Ingresa al sistema"/*`Peticion recibida: ${req.protocolo}://${req.get('host')}${req.originalUrl}`*/)
+    next();
+}
+
+app.use(logger);
+app.use(morgan('tiny'));
+
+/*app.set('port', 3000);*/
+
+app.get('/conParametro/:id',(req,res)=>{
+    console.log(req,params)
+    res.send("<h1>con parametros</h1>")
+})
+
+app.listen(/*app.params('port')*/3000, (req,res)=>{
+    console.log("server en el puerto ", app.get('port'))
+})
+
+/*server.use(express.json());*/
 
 
-server.get('/', function(req,res){
+/*server.get('/:id', function(req,res){
     
     res.json({
         nombre: "Carlos",
@@ -24,6 +44,9 @@ server.get('/', function(req,res){
         edad: 20
     })
 })
+*/
+
+/*
 server.post('/', function(req,res){
     res.send("<h1>POST raiz</h1>");
 })
@@ -44,7 +67,5 @@ server.put('/actualizarUsuario', function(req,res){
 server.delete('/eliminarUsuario', function(req,res){
     res.send("<h1>DELETE eliminar usuario</h1>");
 })
+*/
 
-server.listen(3000, function(){
-    console.log("server en el puerto 300");
-})
