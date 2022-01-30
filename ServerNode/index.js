@@ -26,7 +26,7 @@ server.use(morgan('tiny'));
 server.set('port', 4000);
 
 server.get('/conParametro/:id',(req,res)=>{
-    console.log(req,params)
+    console.log(req.params)
     res.send("<h1> con parametros </h1>")
 })
 
